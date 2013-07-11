@@ -344,8 +344,8 @@ class Regularity_Constrained_Piecewise_Polynomial_Basis:
         
 def fit_piecewise_polynomial(x, y, order, control_points, bounds = (float("-inf"), float("inf")), regularity_constraints = None, centers = None, scales = "autoscale"):
     if scales == "autoscale":
-        scales = np.ones(len(control_points)+1)*np.std(x)
-    pp_gen = Regularity_Constrained_Piecewise_Polynomial_Basis(order, control_points=control_points, bounds = bounds, regularity_constraints = regularity_constraints, centers = centers)
+        scales = np.ones(len(control_points)+1)*np.std(x)*(len(control_points)+1)
+    pp_gen = Regularity_Constrained_Piecewise_Polynomial_Basis(order, control_points=control_points, bounds = bounds, regularity_constraints = regularity_constraints, centers = centers, scales = scales)
     gbasis = pp_gen.get_basis(x)
     n_polys = len(control_points) + 1
     n_coeffs = order+1
