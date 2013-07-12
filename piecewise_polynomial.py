@@ -275,7 +275,8 @@ class Regularity_Constrained_Piecewise_Polynomial_Basis:
         else:
             self.centers = centers
         if scales == None:
-            self.scales = np.ones(n_polys)
+            scales = np.ones(n_polys)
+        self.scales = scales
         poly_basis_list = [[] for i in range(n_polys)]
         for poly_i in range(n_polys):
             #cdomain = (self.boundary_points[poly_i], self.boundary_points[poly_i+1])
